@@ -72,6 +72,7 @@ parse_args() {
 }
 
 override_python_packages() {
+  pip uninstall -y ansible && rm -rf /usr/local/lib/python3.8/site-packages/ansible
   [[ -n "${OVERRIDE}" ]] && pip install ${OVERRIDE} && pip check
   >&2 echo "Completed installing override dependencies..."
 }
